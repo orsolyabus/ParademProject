@@ -44,7 +44,7 @@ module ParademProject
       g.controller_specs false
       g.view_specs false
       g.routing_specs false
-      g.request_specs false
+      g.request_specs true
     end
   end
 end

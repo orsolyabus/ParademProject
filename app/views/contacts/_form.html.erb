@@ -1,0 +1,72 @@
+<%= form_with(model: contact, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %>, contact can not be saved:</h2>
+
+      <ul>
+        <% contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email_primary %>
+    <%= form.text_field :email_primary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :label_email_primary %>
+    <%= form.text_field :label_email_primary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :email_secondary %>
+    <%= form.text_field :email_secondary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :label_email_secondary %>
+    <%= form.text_field :label_email_secondary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :phone_primary %>
+    <%= form.text_field :phone_primary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :label_phone_primary %>
+    <%= form.text_field :label_phone_primary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :phone_secondary %>
+    <%= form.text_field :phone_secondary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :label_phone_secondary %>
+    <%= form.text_field :label_phone_secondary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :organisation %>
+    <%= form.text_field :organisation %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
