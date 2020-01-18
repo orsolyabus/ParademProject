@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :contact do
     association(:user, factory: :user)
-    name { "MyString" }
+    full_name { "MyString" }
     organisation { "MyString" }
     notes { "MyText" }
     email_primary { "primary@email.com" }
