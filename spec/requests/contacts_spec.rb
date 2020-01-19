@@ -15,4 +15,16 @@ RSpec.describe "Contacts", type: :request do
     end
     
   end
+  
+  it "can only be seen or modified by the owner" do
+    user1 = FactoryBot.create(:user, name: "user1", email: "user1@email.com")
+    contact = FactoryBot.create(:contact, user_id: user1.id)
+
+    user2 = FactoryBot.create(:user, name: "user2", email: "user2@email.com", password: "password")
+    post sessions_path :params => { email: user2.email, password: user2.password }
+    
+    get contact_path contact
+    expect(response).to have_http_status(401)
+  end
+  
 end
