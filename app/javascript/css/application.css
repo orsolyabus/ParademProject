@@ -1,3 +1,69 @@
 @import "tailwindcss/base";
+
+/* global style */
+
+body {
+    @apply font-sans
+}
+
+h1 {
+    @apply text-4xl font-normal leading-normal mt-0 mb-2 text-red-800
+}
+
+h2 {
+    @apply text-3xl font-normal leading-normal mt-0 mb-2 text-red-800;
+}
+
+h3 {
+    @apply text-2xl font-normal leading-normal mt-0 mb-2 text-red-800;
+}
+
+input {
+    @apply px-3 py-2 shadow appearance-none border rounded text-gray-700
+}
+
+label {
+    @apply block text-gray-700 text-sm font-bold mb-2
+}
+
+input:focus {
+    @apply outline-none shadow-outline
+}
+
+main {
+    @apply p-6
+}
+
 @import "tailwindcss/components";
+
+/* custom components */
+
+.field {
+    @apply mb-3 pt-0
+}
+
+.btn {
+    @apply bg-teal-500 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow outline-none mr-1 mb-1
+}
+
+.btn:active {
+    @apply bg-teal-600
+}
+
+.btn:hover {
+    @apply shadow-lg
+}
+
+.btn:focus {
+    @apply outline-none
+}
+
+.card {
+    @apply bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col max-w-lg
+}
+
+.warning {
+    @apply font-semibold text-orange-600
+}
+
 @import "tailwindcss/utilities";
