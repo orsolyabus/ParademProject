@@ -1,8 +1,10 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authorize_user!, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts
   end
 
   def show
@@ -17,7 +19,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.user = User.find(1)
+    @contact.user = current_user
     if @contact.save
       redirect_to @contact, notice: "Contact was successfully created."
     else
@@ -46,5 +48,11 @@ class ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :notes, :organisation)
+  end
+  
+  def authorize_user!
+    unless can? :crud, @contact
+      render :file => "public/401.html", :status => :unauthorized
+    end
   end
 end

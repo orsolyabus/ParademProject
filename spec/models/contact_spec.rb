@@ -4,9 +4,9 @@ RSpec.describe Contact, type: :model do
   describe "validations" do
     it "has a name" do
       user = FactoryBot.create(:user)
-      contact = FactoryBot.build(:contact, name: nil, user_id: user.id)
+      contact = FactoryBot.build(:contact, full_name: nil, user_id: user.id)
       contact.valid?
-      expect(contact.errors.messages).to have_key :name
+      expect(contact.errors.messages).to have_key :full_name
     end
 
     it "belong to a user" do
