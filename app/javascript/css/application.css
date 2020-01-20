@@ -30,12 +30,16 @@ input {
     @apply px-3 py-2 shadow appearance-none border rounded text-gray-700;
 }
 
-label {
-    @apply block text-gray-700 text-sm font-bold mb-2;
-}
-
 input:focus {
     @apply outline-none shadow-outline;
+}
+
+textarea {
+    @apply px-3 py-2 shadow appearance-none border rounded text-gray-700 w-auto;
+}
+
+label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
 }
 
 p {
@@ -65,10 +69,6 @@ tr:hover {
 @import "tailwindcss/components";
 
 /* custom components */
-
-.field {
-    @apply mb-3 pt-0;
-}
 
 .btn {
     @apply font-bold uppercase no-underline text-sm tracking-wide px-6 py-3 rounded shadow-md outline-none mr-1 mb-1;
@@ -118,12 +118,24 @@ tr:hover {
     @apply max-w-sm
 }
 
+.card-big {
+    @apply max-w-xl
+}
+
 .card-body {
     @apply px-8 pt-6 pb-8 flex flex-col;
 }
 
 .container {
     @apply px-8 py-6 flex flex-col;
+}
+
+.double-width {
+    @apply w-full
+}
+
+.field {
+    @apply mb-3 pt-0 inline-block pr-6;
 }
 
 .warning {
