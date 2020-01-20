@@ -47,7 +47,7 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :notes, :organisation)
+    params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :phone_primary, :label_phone_primary, :phone_secondary, :label_phone_secondary, :notes, :organisation)
   end
   
   def authorize_user!

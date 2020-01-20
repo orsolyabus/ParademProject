@@ -43,7 +43,23 @@ p {
 }
 
 a {
-  @apply text-red-800 underline;
+    @apply text-red-800 underline;
+}
+
+table {
+    @apply text-left w-full border-collapse;
+}
+
+th {
+    @apply py-4 px-6 bg-gray-200 font-bold uppercase text-sm text-gray-800 border-b border-gray-300;
+}
+
+td {
+    @apply py-4 px-6 border-b border-gray-300;
+}
+
+tr:hover {
+    @apply bg-gray-200;
 }
 
 @import "tailwindcss/components";
@@ -51,35 +67,67 @@ a {
 /* custom components */
 
 .field {
-    @apply mb-3 pt-0
+    @apply mb-3 pt-0;
 }
 
 .btn {
-    @apply bg-teal-600 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow outline-none mr-1 mb-1
+    @apply font-bold uppercase no-underline text-sm tracking-wide px-6 py-3 rounded shadow-md outline-none mr-1 mb-1;
 }
 
-.btn:active {
-    @apply bg-teal-700
-}
-
-.btn:hover {
-    @apply shadow-lg
+.btn-small {
+    @apply px-4 py-2
 }
 
 .btn:focus {
-    @apply outline-none
+    @apply outline-none;
+}
+
+.btn:active {
+    @apply shadow-none;
+}
+
+.btn-teal {
+    @apply bg-teal-600 text-white;
+}
+
+.btn-teal:hover {
+    @apply bg-teal-700;
+}
+
+.btn-orange {
+    @apply bg-orange-500 text-white;
+}
+
+.btn-orange:hover {
+    @apply bg-orange-700;
+}
+
+.btn-red {
+    @apply bg-red-500 text-white;
+}
+
+.btn-red:hover {
+    @apply bg-red-700;
 }
 
 .card {
-    @apply bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col max-w-lg
+    @apply bg-gray-100 shadow-md rounded mb-6;
+}
+
+.card-small {
+    @apply max-w-sm
+}
+
+.card-body {
+    @apply px-8 pt-6 pb-8 flex flex-col;
 }
 
 .container {
-    @apply px-8 py-6 flex flex-col
+    @apply px-8 py-6 flex flex-col;
 }
 
 .warning {
-    @apply font-semibold text-orange-600
+    @apply font-semibold text-orange-600;
 }
 
 @import "tailwindcss/utilities";
