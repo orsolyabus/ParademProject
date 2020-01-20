@@ -1,11 +1,18 @@
-<h1>Hello</h1>
+<h1>Log in!</h1>
 
-<%= form_with(url: sessions_path, local: true) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+<div class="card card-small">
+  <div class="card-body">
+    <%= form_with(url: sessions_path, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Sign In" %>
-<% end %>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <%= f.submit "Log In", class: "btn btn-teal" %>
+    <% end %>
+  </div>
+</div>
