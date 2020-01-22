@@ -1,0 +1,29 @@
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>primary email</th>
+        <th>primary phone number</th>
+        <th>organisation</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.full_name %></td>
+        <td><%= contact.email_primary %></td>
+        <td><%= contact.phone_primary %></td>
+        <td><%= contact.organisation %></td>
+        <td><%= link_to 'Show', contact, class: "btn btn-small btn-teal" %>
+          <%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-orange btn-small" %>
+          <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
