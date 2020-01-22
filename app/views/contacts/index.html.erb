@@ -1,4 +1,15 @@
 <h1>Contacts</h1>
+
+<div class="bar">
+  <div>
+    <%= link_to 'Add New Contact', new_contact_path, class: "btn btn-teal" %>
+  </div>
+  <div>
+    <input type="text" placeholder="name, email, phone, org etc.">
+    <button class="btn btn-teal">Search</button>
+  </div>
+</div>
+
 <div class="card">
   <table>
     <thead>
@@ -19,14 +30,12 @@
         <td><%= contact.email_primary %></td>
         <td><%= contact.phone_primary %></td>
         <td><%= contact.organisation %></td>
-        <td><%= link_to 'Show', contact, class: "btn btn-small btn-teal" %> 
-          <%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-orange btn-small" %> 
-          <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %></td>
+        <td><%= link_to 'Show', contact, class: "btn btn-small btn-teal" %>
+          <%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-orange btn-small" %>
+          <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<p>
-  <%= link_to 'Add New Contact', new_contact_path, class: "btn btn-teal" %>
-</p>
