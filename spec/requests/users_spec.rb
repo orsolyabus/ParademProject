@@ -31,6 +31,7 @@ RSpec.describe "Users", type: :request do
   describe "exsisting user" do
     before do
       @user = FactoryBot.create(:user)
+      post sessions_path :params => { email: @user.email, password: @user.password }
     end
 
     it "renders user page" do
