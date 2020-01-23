@@ -37,5 +37,9 @@ class Ability
       user == contact.user
     end
     
+    can(:crud, User) do |u|
+      user == u
+    end
+    
   end
 end
