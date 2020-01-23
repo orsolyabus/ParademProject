@@ -1,0 +1,165 @@
+@import "tailwindcss/base";
+
+/* global style */
+
+body {
+    @apply font-sans;
+}
+
+main {
+    @apply p-6;
+}
+
+h1 {
+    @apply text-4xl font-normal leading-normal mt-0 mb-2 text-red-800;
+}
+
+h2 {
+    @apply text-3xl font-normal leading-normal mt-0 mb-2 text-red-800;
+}
+
+h3 {
+    @apply text-2xl font-normal leading-normal mt-0 mb-2 text-red-800;
+}
+
+h4 {
+    @apply text-xl font-normal leading-normal mt-0 mb-2 text-gray-800;
+}
+
+input {
+    @apply px-3 py-2 shadow appearance-none border rounded text-gray-700;
+}
+
+input:focus {
+    @apply outline-none shadow-outline;
+}
+
+textarea {
+    @apply px-3 py-2 shadow appearance-none border rounded text-gray-700 w-auto;
+}
+
+label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+p {
+    @apply mb-3 mt-1;
+}
+
+a {
+    @apply text-red-800 underline;
+}
+
+table {
+    @apply text-left w-full border-collapse;
+}
+
+th {
+    @apply py-4 px-6 bg-gray-200 font-bold uppercase text-sm text-gray-800 border-b border-gray-300;
+}
+
+td {
+    @apply py-4 px-6 border-b border-gray-300;
+}
+
+tr:hover {
+    @apply bg-gray-200;
+}
+
+@import "tailwindcss/components";
+
+/* custom components */
+
+.alert {
+    @apply text-white px-6 py-4 border-0 rounded relative mb-4 bg-blue-500
+}
+
+.alert-button {
+    @apply absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none
+}
+
+.alert-button:focus {
+    @apply outline-none
+}
+
+.alert-message {
+    @apply inline-block align-middle mr-8
+}
+
+.bar {
+    @apply mb-4 flex items-start justify-between
+}
+
+.btn {
+    @apply font-bold uppercase no-underline text-sm tracking-wide px-6 py-3 rounded shadow-md outline-none mr-1 mb-1 inline-block;
+}
+
+.btn-small {
+    @apply px-4 py-2
+}
+
+.btn:focus {
+    @apply outline-none;
+}
+
+.btn:active {
+    @apply shadow-none;
+}
+
+.btn-teal {
+    @apply bg-teal-600 text-white;
+}
+
+.btn-teal:hover {
+    @apply bg-teal-700;
+}
+
+.btn-orange {
+    @apply bg-orange-500 text-white;
+}
+
+.btn-orange:hover {
+    @apply bg-orange-700;
+}
+
+.btn-red {
+    @apply bg-red-500 text-white;
+}
+
+.btn-red:hover {
+    @apply bg-red-700;
+}
+
+.card {
+    @apply bg-gray-100 shadow-md rounded mb-6;
+}
+
+.card-small {
+    @apply max-w-sm
+}
+
+.card-big {
+    @apply max-w-xl
+}
+
+.card-body {
+    @apply px-8 pt-6 pb-8 flex flex-col;
+}
+
+.container {
+    @apply px-8 py-6 flex flex-col;
+}
+
+.double-width {
+    @apply w-full
+}
+
+.field {
+    @apply mb-3 pt-0 inline-block pr-6;
+}
+
+.warning {
+    @apply font-semibold text-orange-600;
+}
+
+@import "tailwindcss/utilities";

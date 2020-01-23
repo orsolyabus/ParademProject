@@ -1,16 +1,38 @@
-<div>
-  <p>
-    <strong>Name:</strong>
-    <%= @contact.full_name %>
-  </p>
+<div class="card card-big">
+  <div class="card-body">
+    <p>
+      <h4><%= @contact.full_name %></h4>
+      <%= @contact.organisation %>
+    </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= @contact.email_primary %>
-    <br/>
-    <%= @contact.email_secondary %>
-  </p>
-  
+    <p>
+      <strong>Emails:</strong>
+      <ul>
+        <li>
+          <%= @contact.label_email_primary %> - <%= @contact.email_primary %>
+        </li>
+        <li>
+          <%= @contact.label_email_secondary %> - <%= @contact.email_secondary %>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <strong>Phone numbers:</strong>
+      <ul>
+        <li>
+          <%= @contact.label_phone_primary %> - <%= @contact.phone_primary %>
+        </li>
+        <li>
+          <%= @contact.label_phone_secondary %> - <%= @contact.phone_secondary %>
+        </li>
+      </ul>
+    </p>
+
+    <p><%= @contact.notes %></p>
+
+    <%= link_to 'Edit', edit_contact_path(@contact) %>
+
+  </div>
 </div>
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'All Contacts', contacts_path %>

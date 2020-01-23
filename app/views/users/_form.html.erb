@@ -1,32 +1,44 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
+<div class="card card-small">
+  <div class="card-body">
+    <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> user can not be saved:</h2>
+      <h3>
+        <%= pluralize(user.errors.count, "error") %> user can not be saved:
+      </h3>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li class="warning">
+          <%= message %>
+        </li>
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit "submit", class: "btn btn-teal" %>
+    </div>
+    <% end %>
+
+    <% if user.persisted? %>
+    <%= link_to 'Back', user %>
+    <% end %>
   </div>
-<% end %>
+</div>

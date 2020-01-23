@@ -1,0 +1,21 @@
+<div class="alert">
+
+  <span class="alert-message">
+    <%= message %>
+  </span>
+  <button
+    class="alert-button"
+    onclick="closeAlert(event)">
+    <span>×</span>
+  </button>
+</div>
+
+<script>
+  function closeAlert(event) {
+    let element = event.target;
+    while (element.nodeName !== "BUTTON") {
+      element = element.parentNode;
+    }
+    element.parentNode.parentNode.removeChild(element.parentNode);
+  }
+</script>
