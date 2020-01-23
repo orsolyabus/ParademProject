@@ -11,17 +11,10 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p id="notice"><%= notice %></p>
-    <% end %>
+ 
     <main class="container-fluid">
       <% flash.each do |type, message| %>
-        <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
-          <%= message %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        <%= render "layouts/alert", message: message %>
       <% end %>
     <%= yield %>
   </body>

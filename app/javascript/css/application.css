@@ -70,8 +70,24 @@ tr:hover {
 
 /* custom components */
 
-.bar{
-  @apply mb-4 flex items-start justify-between
+.alert {
+    @apply text-white px-6 py-4 border-0 rounded relative mb-4 bg-blue-500
+}
+
+.alert-button {
+    @apply absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none
+}
+
+.alert-button:focus {
+    @apply outline-none
+}
+
+.alert-message {
+    @apply inline-block align-middle mr-8
+}
+
+.bar {
+    @apply mb-4 flex items-start justify-between
 }
 
 .btn {
