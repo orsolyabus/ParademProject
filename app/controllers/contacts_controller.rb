@@ -64,7 +64,4 @@ class ContactsController < ApplicationController
     end
   end
 
-  def search_param
-    params.require(:phrase).permit(:search_phrase)
-  end
 end
