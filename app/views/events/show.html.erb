@@ -1,0 +1,33 @@
+<div class="card card-big">
+  <div class="card-body">
+    <h4>
+      <%= @event.title %>
+    </h4>
+
+    <p>
+      <strong>date:</strong>
+      <%= @event.date %>
+    </p>
+
+    <p>
+      <strong>attendees:</strong>
+      <%= @event.rsvps.count%> / <%= @event.attendees %>
+    </p>
+    
+    <p>
+      <%= link_to 'add RSVP', @event, class: "btn btn-small btn-teal"%>
+      <ul>
+        <% @event.rsvps.map do |rsvp| %>
+          <li><%= rsvp.contact.full_name %> </li>
+        <% end %> 
+      </ul>
+    </p>
+
+    <p>
+      <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-small btn-orange" %>
+      <br>
+      <%= link_to 'Back to events', events_path %>
+    </p>
+
+  </div>
+</div>
