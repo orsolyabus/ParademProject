@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :authorize_user!, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @contacts = current_user.contacts
   end
@@ -42,6 +42,11 @@ class ContactsController < ApplicationController
     flash[:alert] = "Contact was successfully destroyed."
     redirect_to contacts_url
   end
+  
+  def search
+    @contacts = current_user.contacts.search(params[:phrase])
+    render :index
+  end
 
   private
 
@@ -52,10 +57,11 @@ class ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :phone_primary, :label_phone_primary, :phone_secondary, :label_phone_secondary, :notes, :organisation)
   end
-  
+
   def authorize_user!
     unless can? :crud, @contact
       render :file => "public/401.html", :status => :unauthorized
     end
   end
+
 end

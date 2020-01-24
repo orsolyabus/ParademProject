@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/contacts/search", to: "contacts#search", as: :contacts_search
   resources :contacts
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
