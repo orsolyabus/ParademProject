@@ -44,12 +44,7 @@ class ContactsController < ApplicationController
   end
   
   def search
-    puts params[:phrase]
-    @contacts = Contact.search(params[:phrase])
-    # respond_to do |format|
-    #   format.js { render }
-    #   format.html { render :index }
-    # end
+    @contacts = current_user.contacts.search(params[:phrase])
     render :index
   end
 
