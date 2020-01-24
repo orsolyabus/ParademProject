@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :rsvps
 
-  validates :name, presence: true
+  validates :title, presence: true
   # validate :date_in_the_future
   validates :attendees, numericality: { greater_than: 0 }
 
