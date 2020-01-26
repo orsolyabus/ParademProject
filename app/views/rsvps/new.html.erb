@@ -4,4 +4,6 @@
 
 <%= render "/contacts/search_bar" %>
 
-<%= render "/contacts/list", contacts: current_user.contacts %>
+<%= render "/contacts/list", contacts: @contacts %>
+
+<%= link_to "Back to event", event_path(@event_id) %>

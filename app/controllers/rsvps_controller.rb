@@ -3,13 +3,15 @@ class RsvpsController < ApplicationController
   
   def new
     @rsvp = Rsvp.new
+    @contacts = current_user.contacts.includes(:rsvps)
+    @event_id = params[:event_id]
   end
   
   def create
     @rsvp = Rsvp.new(rsvp_params)
     
     if @rsvp.save
-      redirect_to @rsvp.event, notice: "RSVP saved!"
+      redirect_to new_event_rsvp_path(params[:event_id])
     else
       render :new, notice: @rsvp.errors.messages
     end
@@ -19,7 +21,7 @@ class RsvpsController < ApplicationController
   def destroy
     rsvp = Rsvp.find(params[:id])
     rsvp.destroy
-    redirect_to rsvp.event
+    redirect_to new_event_rsvp_path params[:event_id]
   end
   
   private

@@ -1,10 +1,20 @@
+<% rsvp = contact.rsvps.find_by(event_id: @event_id) %>
+<% if rsvp  %>
+  comig: <%= rsvp.response %>
+  <%= link_to 'Delete', 
+    event_rsvp_path(@event_id, rsvp), 
+    method: :delete, 
+    data: { confirm: 'Are you sure?' }, 
+    class: "btn btn-tiny btn-orange" 
+  %>
+<% else %>
+  <%= link_to 'yes',
+    event_rsvps_path(contact_id: contact.id, response: "yes" ), 
+    method: :post, class: "btn btn-small btn-teal" 
+  %>
 
-<%= link_to 'yes',
-  event_rsvps_path(contact_id: contact.id, response: "yes" ), 
-  method: :post, class: "btn btn-small btn-teal" 
-%>
-
-<%= link_to 'no', 
-  event_rsvps_path(contact_id: contact.id, response: "no" ), 
-  method: :post, class: "btn btn-small btn-red" 
-%>
+  <%= link_to 'no', 
+    event_rsvps_path(contact_id: contact.id, response: "no" ), 
+    method: :post, class: "btn btn-small btn-red" 
+  %>
+<% end %>
