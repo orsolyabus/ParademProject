@@ -12,15 +12,13 @@
     </thead>
 
     <tbody>
-      <% @contacts.each do |contact| %>
+      <% contacts.each do |contact| %>
       <tr>
         <td><%= contact.full_name %></td>
         <td><%= contact.email_primary %></td>
         <td><%= contact.phone_primary %></td>
         <td><%= contact.organisation %></td>
-        <td><%= link_to 'Show', contact, class: "btn btn-small btn-teal" %>
-          <%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-orange btn-small" %>
-          <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %>
+        <td><%= render "actions", contact: contact %>
         </td>
       </tr>
       <% end %>

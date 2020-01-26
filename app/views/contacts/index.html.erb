@@ -1,5 +1,9 @@
 <h1>Contacts</h1>
-
-<%= render "bar" %>
+<div class="bar">
+  <div>
+    <%= link_to 'Add New Contact', new_contact_path, class: "btn btn-teal" %>
+  </div>
+  <%= render "search_bar" %>
+</div>
 
 <%= render "list", contacts: @contacts %>
