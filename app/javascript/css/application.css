@@ -158,6 +158,10 @@ tr:hover {
     @apply mb-3 pt-0 inline-block pr-6;
 }
 
+.text-normal {
+    @apply text-gray-800;
+}
+
 .warning {
     @apply font-semibold text-orange-600;
 }

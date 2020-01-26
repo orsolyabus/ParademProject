@@ -1,0 +1,10 @@
+
+<%= link_to 'yes',
+  event_rsvps_path(contact_id: contact.id, response: "yes" ), 
+  method: :post, class: "btn btn-small btn-teal" 
+%>
+
+<%= link_to 'no', 
+  event_rsvps_path(contact_id: contact.id, response: "no" ), 
+  method: :post, class: "btn btn-small btn-red" 
+%>
