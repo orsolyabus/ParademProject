@@ -1,8 +1,8 @@
-<% rsvp = contact.rsvps.find_by(event_id: @event_id) %>
+<% rsvp = contact.rsvps.find_by(event_id: @event.id) %>
 <% if rsvp  %>
   comig: <%= rsvp.response %>
   <%= link_to 'Delete', 
-    event_rsvp_path(@event_id, rsvp), 
+    event_rsvp_path(@event.id, rsvp), 
     method: :delete, 
     data: { confirm: 'Are you sure?' }, 
     class: "btn btn-tiny btn-orange" 

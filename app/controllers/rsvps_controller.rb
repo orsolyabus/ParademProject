@@ -4,7 +4,7 @@ class RsvpsController < ApplicationController
   def new
     @rsvp = Rsvp.new
     @contacts = current_user.contacts.includes(:rsvps)
-    @event_id = params[:event_id]
+    @event = Event.find(params[:event_id])
   end
   
   def create
