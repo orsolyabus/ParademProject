@@ -4,27 +4,25 @@
       <%= @event.title %>
     </h4>
 
-    <p>
-      <strong>date:</strong>
+    <p class="text-normal">
       <%= @event.date %>
     </p>
 
-    <p>
-      <strong>attendees:</strong>
-      <%= @event.rsvps.count%> / <%= @event.attendees %>
+    <p class="text-normal">
+      attendees: <%= coming.count %> / <%= @event.attendees %>
     </p>
     
     <p>
-      <%= link_to 'add RSVP', @event, class: "btn btn-small btn-teal"%>
+      <%= link_to 'add RSVP', new_event_rsvp_path(@event), class: "btn btn-small btn-teal"%>
       <ul>
-        <% @event.rsvps.map do |rsvp| %>
+        <% coming.map do |rsvp| %>
           <li><%= rsvp.contact.full_name %> </li>
         <% end %> 
       </ul>
     </p>
 
     <p>
-      <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-small btn-orange" %>
+      <%= link_to 'Edit event', edit_event_path(@event), class: "btn btn-small btn-orange" %>
       <br>
       <%= link_to 'Back to events', events_path %>
     </p>

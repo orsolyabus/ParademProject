@@ -1,11 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  
   def index
     @events = current_user.events
   end
 
   def show
+    @event = Event.includes(rsvps: :contact).find(params[:id])
   end
 
   def new
