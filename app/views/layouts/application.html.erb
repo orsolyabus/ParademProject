@@ -11,7 +11,8 @@
   </head>
 
   <body>
- 
+    <%= render "/layouts/navbar" %>
+    
     <main class="container-fluid">
       <% flash.each do |type, message| %>
         <%= render "layouts/alert", message: message %>

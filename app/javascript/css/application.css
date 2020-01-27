@@ -99,7 +99,7 @@ tr:hover {
 }
 
 .btn-tiny {
-  @apply px-2 py-1
+    @apply px-2 py-1
 }
 
 .btn:focus {
@@ -160,6 +160,30 @@ tr:hover {
 
 .field {
     @apply mb-3 pt-0 inline-block pr-6;
+}
+
+.navbar {
+    @apply relative flex items-center justify-between flex-wrap bg-teal-500 px-6 py-3
+}
+
+.nav {
+    @apply w-full block flex-grow flex items-center w-auto
+}
+
+.nav-brand {
+    @apply font-semibold text-xl mr-6 text-white uppercase;
+}
+
+.nav-menu {
+    @apply flex-grow text-sm flex flex-row;
+}
+
+.nav-link {
+    @apply px-3 py-2 flex items-center uppercase font-bold leading-snug text-white no-underline
+}
+
+.nav-link:hover {
+    @apply opacity-75
 }
 
 .text-normal {
