@@ -39,8 +39,8 @@ class Ability
     
     can :crud, Event, user_id: user.id
     
-    can :create, Rsvp  do |rsvp|
-      rsvp.contact.user == user && rsvp.event.user == user
+    can :rsvp, Event  do |event|
+      event.user == user
     end
     
   end

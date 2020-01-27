@@ -1,10 +1,9 @@
 class RsvpsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :authorize_user!, only: [:create, :destroy]
+  before_action :find_event
+  before_action :authorize_user!, only: [:new, :create, :destroy]
 
   def new
-    @event = Event.find(params[:event_id])
-    authorize_user! @event
     @rsvp = Rsvp.new
     @contacts = current_user.contacts.includes(:rsvps)
   end
@@ -16,14 +15,12 @@ class RsvpsController < ApplicationController
     else
       render :new, notice: @rsvp.errors.messages
     end
-    # solve autorization!
   end
 
   def destroy
     rsvp = Rsvp.find(params[:id])
     rsvp.destroy
     redirect_to new_event_rsvp_path params[:event_id]
-    # solve autorization!
   end
 
   private
@@ -32,8 +29,12 @@ class RsvpsController < ApplicationController
     params.permit(:response, :contact_id, :event_id)
   end
 
-  def authorize_user!(item = @rsvp)
-    unless can? :crud, item
+  def find_event
+    @event = Event.find(params[:event_id])
+  end
+  
+  def authorize_user!
+    unless can? :rsvp, @event
       render :file => "public/401.html", :status => :unauthorized
     end
   end
