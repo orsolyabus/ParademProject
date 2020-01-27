@@ -33,12 +33,14 @@ class Ability
     
     alias_action(:create, :read, :update, :delete, to: :crud)
     
-    can(:crud, Contact) do |contact|
-      user == contact.user
-    end
+    can :crud, Contact, user_id: user.id
     
-    can(:crud, User) do |u|
-      user == u
+    can :crud, User, id: user.id
+    
+    can :crud, Event, user_id: user.id
+    
+    can :create, Rsvp  do |rsvp|
+      rsvp.contact.user == user && rsvp.event.user == user
     end
     
   end

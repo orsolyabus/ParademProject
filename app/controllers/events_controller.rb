@@ -1,13 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!
+  before_action :authorize_user!, except: [:new, :index, :create]
   
   def index
     @events = current_user.events
   end
 
   def show
-    @event = Event.includes(rsvps: :contact).find(params[:id])
   end
 
   def new
@@ -42,10 +42,16 @@ class EventsController < ApplicationController
 
   private
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.includes(rsvps: :contact).find(params[:id])
     end
 
     def event_params
       params.require(:event).permit(:title, :date, :attendees)
+    end
+    
+    def authorize_user!
+      unless can? :crud, @event
+        render :file => "public/401.html", :status => :unauthorized
+      end
     end
 end
