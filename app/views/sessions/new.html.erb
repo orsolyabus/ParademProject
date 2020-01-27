@@ -12,7 +12,11 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
-    <%= f.submit "Log In", class: "btn btn-teal" %>
+    <div>
+      <%= f.submit "Log In", class: "btn btn-teal" %>
+      <%= link_to "sign up", new_user_path, class: "btn btn-orange" %>
     <% end %>
+    </div>
+    
   </div>
 </div>
