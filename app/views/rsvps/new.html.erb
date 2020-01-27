@@ -1,0 +1,9 @@
+<h1>RSVP</h1>
+
+<h4 class="text-normal" >spots left: <%= @event.attendees - coming.count %></h4>
+
+<%= render "/contacts/search_bar", search_url: event_rsvp_search_url %>
+
+<%= render "/contacts/list", contacts: @contacts %>
+
+<%= link_to "Back to event", event_path(@event) %>

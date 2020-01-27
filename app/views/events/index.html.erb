@@ -1,0 +1,33 @@
+<h1>Events</h1>
+
+<div class="bar">
+  <%= link_to 'New Event', new_event_path, class: "btn btn-teal" %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>date</th>
+      <th>Max attendees</th>
+      <th>RSVP</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.date %></td>
+      <td><%= event.attendees %></td>
+      <td><%= event.rsvps.count %></td>
+      <td>
+        <%= link_to 'show', event, class: "btn btn-small btn-teal" %>
+        <%= link_to 'Edit', edit_event_path(event), class: "btn btn-small btn-orange" %>
+        <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

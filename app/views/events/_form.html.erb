@@ -1,0 +1,36 @@
+<div class="card card-big">
+  <div class="card-body">
+    <%= form_with(model: event, local: true) do |form| %>
+    <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> this event can not be saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_field :date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :attendees %>
+      <%= form.number_field :attendees, min: 1 %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "create", class: "btn btn-teal" %>
+    </div>
+    <% end %>
+  </div>
+</div>

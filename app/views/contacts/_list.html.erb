@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="search-results">
   <table>
     <thead>
       <tr>
@@ -18,9 +18,12 @@
         <td><%= contact.email_primary %></td>
         <td><%= contact.phone_primary %></td>
         <td><%= contact.organisation %></td>
-        <td><%= link_to 'Show', contact, class: "btn btn-small btn-teal" %>
-          <%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-orange btn-small" %>
-          <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-red" %>
+        <td> 
+          <% if params[:event_id] %>
+            <%= render "/rsvps/actions", contact: contact %>
+          <% else %>
+            <%= render "actions", contact: contact %>
+          <% end %>
         </td>
       </tr>
       <% end %>

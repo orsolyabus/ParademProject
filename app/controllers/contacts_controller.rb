@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_action :authorize_user!, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.order(:full_name)
   end
 
   def show
@@ -45,7 +45,9 @@ class ContactsController < ApplicationController
   
   def search
     @contacts = current_user.contacts.search(params[:phrase])
-    render :index
+    respond_to do |format|
+      format.js { render }
+    end
   end
 
   private
