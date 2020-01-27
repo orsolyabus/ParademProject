@@ -5,7 +5,7 @@ class RsvpsController < ApplicationController
 
   def new
     @rsvp = Rsvp.new
-    @contacts = current_user.contacts.includes(:rsvps)
+    @contacts = current_user.contacts.includes(:rsvps).order(:full_name)
   end
 
   def create
