@@ -1,9 +1,14 @@
 ./bin/webpack-dev-server
 
-To Do
+Missing
+
+search on rsvp page (AJAX)
+relationships
+navbar
+solve rsvp authorization
+
+Nice to have
 
 optimise RSVP query
-navbar
 sight up button on login page
 
-solve rsvp authorization
