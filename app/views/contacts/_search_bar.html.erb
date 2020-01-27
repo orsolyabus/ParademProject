@@ -1,5 +1,5 @@
 <div>
-  <%= form_with url: contacts_search_url , method: :get, local: true do |form| %> 
+  <%= form_with url: search_url , method: :get, local: false do |form| %> 
     <%= form.search_field :phrase, placeholder: "name, email, phone, org" %>
     <%= form.submit "search", class: "btn btn-teal" %>
   <% end %> 

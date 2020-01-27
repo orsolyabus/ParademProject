@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
   resources :events do
+    get "/rsvps/search", to: "rsvps#search_contacts", as: :rsvp_search
     resources :rsvps, only: [:new, :create, :destroy]
   end
 

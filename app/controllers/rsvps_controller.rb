@@ -22,6 +22,13 @@ class RsvpsController < ApplicationController
     rsvp.destroy
     redirect_to new_event_rsvp_path params[:event_id]
   end
+  
+  def search_contacts
+    @contacts = current_user.contacts.search(params[:phrase])
+    respond_to do |format|
+      format.js { render }
+    end
+  end
 
   private
 

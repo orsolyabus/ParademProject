@@ -3,7 +3,7 @@
   <div>
     <%= link_to 'Add New Contact', new_contact_path, class: "btn btn-teal" %>
   </div>
-  <%= render "search_bar" %>
+  <%= render "search_bar", search_url: contacts_search_url %>
 </div>
 
-<%= render "list", contacts: @contacts %>
+<%= render "list" %>

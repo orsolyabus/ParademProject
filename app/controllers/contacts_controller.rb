@@ -45,7 +45,9 @@ class ContactsController < ApplicationController
   
   def search
     @contacts = current_user.contacts.search(params[:phrase])
-    render :index
+    respond_to do |format|
+      format.js { render }
+    end
   end
 
   private
