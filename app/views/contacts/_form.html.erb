@@ -12,13 +12,13 @@
       </ul>
     </div>
     <% end %>
-    
+
     <div class="row">
       <div class="field">
         <%= form.label :full_name %>
         <%= form.text_field :full_name %>
       </div>
-      
+
       <div class="field">
         <%= form.label :organisation %>
         <%= form.text_field :organisation %>
@@ -80,6 +80,20 @@
       </div>
     </div>
 
+    <div class="row">
+      <%= form.fields :introduction_attributes do |fields| %>
+      <div class="field">
+        <%= fields.label :introduced_by_id %>
+        <%= fields.text_field :introduced_by_id %>
+      </div>
+
+      <div class="field">
+        <%= fields.label :relationship %>
+        
+       
+        <% end %>
+      </div>
+    </div>
 
     <div class="actions">
       <%= form.submit "submit", class: "btn btn-teal" %>

@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @introduction = Introduction.new
   end
 
   def edit
@@ -20,7 +21,12 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-    if @contact.save
+    puts "...................................."
+    puts contact_params[:introduction_attributes]
+    puts "...................................."
+    @introduction = Introduction.new(contact_params[:introduction_attributes])
+    @introduction.contact = @contact
+    if @contact.save && @introduction.save
       flash[:alert] = "Contact was successfully created."
       redirect_to @contact
     else
@@ -42,7 +48,7 @@ class ContactsController < ApplicationController
     flash[:alert] = "Contact was successfully destroyed."
     redirect_to contacts_url
   end
-  
+
   def search
     @contacts = current_user.contacts.search(params[:phrase])
     respond_to do |format|
@@ -57,7 +63,21 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :phone_primary, :label_phone_primary, :phone_secondary, :label_phone_secondary, :notes, :organisation)
+    params.require(:contact)
+      .permit(
+        :full_name,
+        :email_primary,
+        :email_secondary,
+        :label_email_primary,
+        :label_email_secondary,
+        :phone_primary,
+        :label_phone_primary,
+        :phone_secondary,
+        :label_phone_secondary,
+        :notes,
+        :organisation,
+        introduction_attributes: [:introduced_by_id, :relationship, :_destroy],
+      )
   end
 
   def authorize_user!
