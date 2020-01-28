@@ -2,7 +2,7 @@ class Contact < ApplicationRecord
   belongs_to :user
   has_many :rsvps, dependent: :destroy
   has_one :introduction, dependent: :destroy
-  has_one :introduced_by, through: :introductions
+  has_one :introduced_by, through: :introduction
   
   accepts_nested_attributes_for :introduction, allow_destroy: true
   
