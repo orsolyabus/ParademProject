@@ -21,9 +21,6 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-    puts "...................................."
-    puts contact_params[:introduction_attributes]
-    puts "...................................."
     @introduction = Introduction.new(contact_params[:introduction_attributes])
     @introduction.contact = @contact
     if @contact.save && @introduction.save
@@ -35,7 +32,10 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update(contact_params)
+    @contact.introduction&.destroy
+    @introduction = Introduction.new(contact_params[:introduction_attributes])
+    @introduction.contact = @contact
+    if @contact.update(contact_params) && @introduction.save
       flash[:alert] = "Contact was successfully updated."
       redirect_to @contact
     else
@@ -45,7 +45,7 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
-    flash[:alert] = "Contact was successfully destroyed."
+    flash[:alert] = "Contact was successfully deleted."
     redirect_to contacts_url
   end
 

@@ -1,12 +1,12 @@
 class Contact < ApplicationRecord
-  validates :full_name, presence: true
   belongs_to :user
-  has_many :rsvps
-  has_one :introduction
-  # has_one :introduced_by, through: :introductions
+  has_many :rsvps, dependent: :destroy
+  has_one :introduction, dependent: :destroy
+  has_one :introduced_by, through: :introductions
   
   accepts_nested_attributes_for :introduction, allow_destroy: true
   
+  validates :full_name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email_primary, :email_secondary, format: VALID_EMAIL_REGEX, allow_blank: true
 
