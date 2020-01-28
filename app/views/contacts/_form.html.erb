@@ -89,8 +89,7 @@
 
       <div class="field">
         <%= fields.label :relationship %>
-        
-       
+        <%= select_tag "contact[introduction_attributes][relationship]", options_for_select(Introduction.relationships.keys) %>
         <% end %>
       </div>
     </div>

@@ -4,7 +4,7 @@ class Introduction < ApplicationRecord
 
   enum relationship: [:friend, :family, :manager, :employee, :other]
   
-  # validates :relationship, presence: true
+  validates :relationship, presence: true
   validates(
     :contact_id,
     uniqueness: {
