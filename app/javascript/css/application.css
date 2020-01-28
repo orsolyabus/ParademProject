@@ -34,6 +34,10 @@ input:focus {
     @apply outline-none shadow-outline;
 }
 
+select {
+    @apply w-full px-3 py-2 shadow appearance-none border rounded text-gray-700;
+}
+
 textarea {
     @apply px-3 py-2 shadow appearance-none border rounded text-gray-700 w-auto;
 }
@@ -159,7 +163,7 @@ tr:hover {
 }
 
 .field {
-    @apply mb-3 pt-0 inline-block pr-6;
+    @apply mb-3 pt-0 inline-block pr-6 w-full;
 }
 
 .navbar {
@@ -184,6 +188,10 @@ tr:hover {
 
 .nav-link:hover {
     @apply opacity-75
+}
+
+.row {
+    @apply flex flex-row;
 }
 
 .text-normal {
