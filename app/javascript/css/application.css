@@ -163,7 +163,11 @@ tr:hover {
 }
 
 .field {
-    @apply mb-3 pt-0 inline-block pr-6 w-full;
+    @apply mb-3 pt-0 inline-block pr-6 w-full relative;
+}
+
+.hide {
+    @apply hidden
 }
 
 .navbar {

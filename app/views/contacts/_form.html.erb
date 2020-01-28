@@ -1,102 +1,120 @@
-<div class="card card-big">
-  <div class="card-body flex">
-    <%= form_with(model: contact, local: true) do |form| %>
-    <% if contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %>, contact can not be saved:</h2>
+<div class="row">
+  <div class="card card-big">
+    <div class="card-body flex">
+      <%= form_with(model: contact, local: true) do |form| %>
+      <% if contact.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(contact.errors.count, "error") %>, contact can not be saved:</h2>
 
-      <ul>
-        <% contact.errors.full_messages.each do |message| %>
-        <li class="warning"><%= message %></li class="warning">
-        <% end %>
-      </ul>
+        <ul>
+          <% contact.errors.full_messages.each do |message| %>
+          <li class="warning"><%= message %></li class="warning">
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="row">
+        <div class="field">
+          <%= form.label :full_name %>
+          <%= form.text_field :full_name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :organisation %>
+          <%= form.text_field :organisation %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <%= form.label :email_primary %>
+          <%= form.text_field :email_primary %>
+        </div>
+
+        <div class="field">
+          <%= form.label :label_email_primary %>
+          <%= form.text_field :label_email_primary %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <%= form.label :email_secondary %>
+          <%= form.text_field :email_secondary %>
+        </div>
+
+        <div class="field">
+          <%= form.label :label_email_secondary %>
+          <%= form.text_field :label_email_secondary %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <%= form.label :phone_primary %>
+          <%= form.text_field :phone_primary %>
+        </div>
+
+        <div class="field">
+          <%= form.label :label_phone_primary %>
+          <%= form.text_field :label_phone_primary %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <%= form.label :phone_secondary %>
+          <%= form.text_field :phone_secondary %>
+        </div>
+
+        <div class="field">
+          <%= form.label :label_phone_secondary %>
+          <%= form.text_field :label_phone_secondary %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field double-width">
+          <%= form.label :notes %>
+          <%= form.text_area :notes, class: "double-width" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= form.fields :introduction_attributes do |fields| %>
+        <div class="field">
+          <%= fields.label :introduced_by_id %>
+          <button class="btn btn-orange btn-small" type="button" onclick= toggleModal() >
+            find contact
+          </button>
+          <%= fields.hidden_field :introduced_by_id %>
+        </div>
+
+        <div class="field">
+          <%= fields.label :relationship %>
+          <%= select_tag "contact[introduction_attributes][relationship]", options_for_select(Introduction.relationships.keys), prompt: "Select something" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "submit", class: "btn btn-teal" %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-
-    <div class="row">
-      <div class="field">
-        <%= form.label :full_name %>
-        <%= form.text_field :full_name %>
-      </div>
-
-      <div class="field">
-        <%= form.label :organisation %>
-        <%= form.text_field :organisation %>
-      </div>
+  </div>
+  <div id="mini_search" class="hide card">
+    <div class="card-body flex">
+      <%= render "search_bar", search_url: contacts_search_url %>
+      <div id="search-results"></div>
+      <%#= render "list" %>
     </div>
-
-    <div class="row">
-      <div class="field">
-        <%= form.label :email_primary %>
-        <%= form.text_field :email_primary %>
-      </div>
-
-      <div class="field">
-        <%= form.label :label_email_primary %>
-        <%= form.text_field :label_email_primary %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <%= form.label :email_secondary %>
-        <%= form.text_field :email_secondary %>
-      </div>
-
-      <div class="field">
-        <%= form.label :label_email_secondary %>
-        <%= form.text_field :label_email_secondary %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <%= form.label :phone_primary %>
-        <%= form.text_field :phone_primary %>
-      </div>
-
-      <div class="field">
-        <%= form.label :label_phone_primary %>
-        <%= form.text_field :label_phone_primary %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <%= form.label :phone_secondary %>
-        <%= form.text_field :phone_secondary %>
-      </div>
-
-      <div class="field">
-        <%= form.label :label_phone_secondary %>
-        <%= form.text_field :label_phone_secondary %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field double-width">
-        <%= form.label :notes %>
-        <%= form.text_area :notes, class: "double-width" %>
-      </div>
-    </div>
-
-    <div class="row">
-      <%= form.fields :introduction_attributes do |fields| %>
-      <div class="field">
-        <%= fields.label :introduced_by_id %>
-        <%= fields.text_field :introduced_by_id %>
-      </div>
-
-      <div class="field">
-        <%= fields.label :relationship %>
-        <%= select_tag "contact[introduction_attributes][relationship]", options_for_select(Introduction.relationships.keys) %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="actions">
-      <%= form.submit "submit", class: "btn btn-teal" %>
-    </div>
-    <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  function toggleModal(){
+    document.getElementById("mini_search").classList.toggle("hide");
+  }
+</script>
