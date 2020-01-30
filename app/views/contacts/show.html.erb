@@ -31,7 +31,7 @@
 
     <p><%= @contact.notes %></p>
     
-    <p><strong>Introduced by:</strong> <%= @contact.introduced_by.full_name%></p>
+    <p><strong>Introduced by:</strong> <%= @contact.introduced_by&.full_name%></p>
 
     <%= link_to 'Edit', edit_contact_path(@contact) %>
 

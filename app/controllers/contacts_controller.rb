@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
     @contact.user = current_user
     @introduction = Introduction.new(contact_params[:introduction_attributes])
     @introduction.contact = @contact
-    if @contact.save && @introduction.save
+    if @contact.save
       flash[:alert] = "Contact was successfully created."
       redirect_to @contact
     else
