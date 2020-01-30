@@ -11,13 +11,14 @@
 
     <tbody>
       <% @contacts.each do |contact| %>
+      <% c = {name: contact.full_name.parameterize, id: contact.id} %>
       <tr>
         <td><%= contact.full_name %></td>
         <td><%= contact.organisation %></td>
         <td>
           <button 
             class="btn btn-orange btn-small" 
-            onclick = set_contact(<%= contact.id %>)
+            onclick = set_contact(<%= c.to_json %>)
           >
             set introducer
           </button>
