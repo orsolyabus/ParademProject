@@ -85,10 +85,10 @@
         <%= form.fields :introduction_attributes do |fields| %>
         <div class="field">
           <%= fields.label :introduced_by_id %>
-          <button class="btn btn-orange btn-small" type="button" onclick= toggleModal() >
+          <%= fields.hidden_field :introduced_by_id %>
+          <button class="btn btn-orange btn-small" id="find_contact_button" type="button" onclick= toggleModal() >
             find contact
           </button>
-          <%= fields.hidden_field :introduced_by_id %>
         </div>
 
         <div class="field">
@@ -106,9 +106,8 @@
   </div>
   <div id="mini_search" class="hide card">
     <div class="card-body flex">
-      <%= render "search_bar", search_url: contacts_search_url %>
+      <%= render "search_bar", search_url: quick_search_url %>
       <div id="search-results"></div>
-      <%#= render "list" %>
     </div>
   </div>
 </div>
@@ -116,5 +115,11 @@
 <script type="text/javascript">
   function toggleModal(){
     document.getElementById("mini_search").classList.toggle("hide");
-  }
+  };
+  function set_contact(id){
+    // document.getElementById("contact_introduction_attributes_introducer").value = contact.name;
+    document.getElementById("contact_introduction_attributes_introduced_by_id").value = id;
+    console.log(id);
+    toggleModal();
+  };
 </script>

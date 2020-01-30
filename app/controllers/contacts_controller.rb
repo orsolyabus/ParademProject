@@ -55,6 +55,13 @@ class ContactsController < ApplicationController
       format.js { render }
     end
   end
+  
+  def quick_search
+    @contacts = current_user.contacts.search(params[:phrase])
+    respond_to do |format|
+      format.js { render }
+    end
+  end
 
   private
 

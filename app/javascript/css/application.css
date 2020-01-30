@@ -35,7 +35,7 @@ input:focus {
 }
 
 select {
-    @apply w-full px-3 py-2 shadow appearance-none border rounded text-gray-700;
+    @apply w-full px-3 py-2 shadow appearance-none border rounded text-gray-700 bg-white;
 }
 
 textarea {

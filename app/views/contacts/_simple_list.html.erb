@@ -1,0 +1,29 @@
+<div class="card" id="search-results">
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>organisation</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.full_name %></td>
+        <td><%= contact.organisation %></td>
+        <td>
+          <button 
+            class="btn btn-orange btn-small" 
+            onclick = set_contact(<%= contact.id %>)
+          >
+            set introducer
+          </button>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
