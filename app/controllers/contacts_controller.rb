@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @introduction = Introduction.new
   end
 
   def edit
@@ -20,7 +21,9 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
-    if @contact.save
+    @introduction = Introduction.new(contact_params[:introduction_attributes])
+    @introduction.contact = @contact
+    if @contact.save && @introduction.save
       flash[:alert] = "Contact was successfully created."
       redirect_to @contact
     else
@@ -29,7 +32,10 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update(contact_params)
+    @contact.introduction&.destroy
+    @introduction = Introduction.new(contact_params[:introduction_attributes])
+    @introduction.contact = @contact
+    if @contact.update(contact_params) && @introduction.save
       flash[:alert] = "Contact was successfully updated."
       redirect_to @contact
     else
@@ -39,11 +45,18 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
-    flash[:alert] = "Contact was successfully destroyed."
+    flash[:alert] = "Contact was successfully deleted."
     redirect_to contacts_url
   end
-  
+
   def search
+    @contacts = current_user.contacts.search(params[:phrase])
+    respond_to do |format|
+      format.js { render }
+    end
+  end
+  
+  def quick_search
     @contacts = current_user.contacts.search(params[:phrase])
     respond_to do |format|
       format.js { render }
@@ -57,7 +70,21 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:full_name, :email_primary, :email_secondary, :label_email_primary, :label_email_secondary, :phone_primary, :label_phone_primary, :phone_secondary, :label_phone_secondary, :notes, :organisation)
+    params.require(:contact)
+      .permit(
+        :full_name,
+        :email_primary,
+        :email_secondary,
+        :label_email_primary,
+        :label_email_secondary,
+        :phone_primary,
+        :label_phone_primary,
+        :phone_secondary,
+        :label_phone_secondary,
+        :notes,
+        :organisation,
+        introduction_attributes: [:introduced_by_id, :relationship, :_destroy],
+      )
   end
 
   def authorize_user!

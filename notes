@@ -1,10 +1,6 @@
 ./bin/webpack-dev-server
 
-Missing
-
-relationships
-
-
 Nice to have
 
+make introducer optional
 optimise RSVP query
