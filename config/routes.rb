@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     get "/rsvps/search", to: "rsvps#search_contacts", as: :rsvp_search
     resources :rsvps, only: [:new, :create, :destroy]
   end
-
+ get "/", to: "sessions#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
